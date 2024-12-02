@@ -5,6 +5,9 @@ import 'app.dart';
 // const
 
 // HOT RELOAD
+
+//We will use BloCk for state management
+
 void main() {
   runApp(
     const MyApp(),

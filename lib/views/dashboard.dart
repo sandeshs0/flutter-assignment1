@@ -15,8 +15,11 @@ class Dashboard extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        child: ListView(
+        padding: const EdgeInsets.all(20),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
           children: [
             DashboardButton(
               label: 'Arithmetic',
@@ -28,7 +31,6 @@ class Dashboard extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 20),
             DashboardButton(
               label: 'Simple Interest',
               icon: Icons.monetization_on_outlined,
@@ -39,7 +41,6 @@ class Dashboard extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 20),
             DashboardButton(
               label: 'Area of Circle',
               icon: Icons.circle_outlined,
@@ -71,33 +72,34 @@ class DashboardButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-        shape: RoundedRectangleBorder(
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 81, 57, 91),
           borderRadius: BorderRadius.circular(12),
         ),
-        backgroundColor: Colors.blueAccent,
-      ),
-      onPressed: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(
-            icon,
-            size: 30,
-            color: Colors.white,
-          ),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const Icon(
-            Icons.arrow_forward_ios,
-            size: 20,
-            color: Colors.white,
-          ),
-        ],
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 50,
+              color: Colors.white,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

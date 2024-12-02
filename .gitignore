@@ -31,7 +31,6 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-lib/views/
 
 # Symbolication related
 app.*.symbols
