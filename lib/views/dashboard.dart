@@ -51,6 +51,16 @@ class Dashboard extends StatelessWidget {
                 );
               },
             ),
+            // DashboardButton(
+            //   label: 'Rich Text',
+            //   icon: Icons.circle_outlined,
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (_) => const RichText()),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

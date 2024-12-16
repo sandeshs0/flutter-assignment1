@@ -8,9 +8,12 @@ class AreaCircle extends StatefulWidget {
 }
 
 class _AreaCircleState extends State<AreaCircle> {
-  double radius = 0;
-  double pi = 3.14;
-  double area = 0;
+  // Global Key
+  final _formKey=GlobalKey<FormState>();
+
+  //Controller for field
+  final radiusController=TextEditingController();
+  double area=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,42 +22,51 @@ class _AreaCircleState extends State<AreaCircle> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            TextField(
-              onChanged: (value) {
-                radius = double.parse(value);
-              },
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter radius ',
+        child: Form(
+          key:_formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: radiusController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Enter radius ',
+                ),
+                validator: (value){
+                  if(value==null || value.isEmpty){
+                    return 'Please enter the radius';
+                  }
+                  return null;
+                }
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text('area : $area',
-                style: const TextStyle(
-                  fontSize: 20,
-                )),
-            const SizedBox(
-              height: 8,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // State lai change gara
-                  // buil method ma feri jau ani refresh gara
-                  setState(() {
-                    area = radius * radius * pi;
-                  });
-                },
-                child: const Text('Calculate'),
+              const SizedBox(
+                height: 8,
               ),
-            ),
-          ],
+              Text('area : $area',
+                  style: const TextStyle(
+                    fontSize: 20,
+                  )),
+              const SizedBox(
+                height: 8,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // State lai change gara
+                    // buil method ma feri jau ani refresh gara
+                    if(_formKey.currentState!.validate()){
+                      setState(() {
+                        area= 3.14 * int.parse(radiusController.text)* int.parse(radiusController.text);
+                      });
+                    }
+                  },
+                  child: const Text('Calculate'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,14 +1,20 @@
-import 'package:flutter/material.dart';
-import 'views/dashboard.dart';
+// import 'package:first_flutter/views/student_details_view.dart';
+// import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Dashboard(),
-    ); 
-  }
-}
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       initialRoute: '/',
+//       routes: {
+//         '/': (context) => const StudentDetailsView(),
+//         '/output': (context) => const StudentOutputView(),
+//       },
+ 
+//     ); 
+//   }
+// }
